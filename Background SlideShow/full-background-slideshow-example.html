@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type"/>
+
+<title>Background slider jquery | @eduardo_fx</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+
+
+<script type="text/javascript">
+
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
+
+    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+
+    $active.addClass('last-active');
+
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+        /*Aqui vai onde coloca o tempo pra passar as fotos... 8 segundos..*/
+
+$(function() {
+    setInterval( "slideSwitch()", 8000 );
+});
+
+</script>
+
+</head>
+
+<body>
+<div id="slideshow">
+    <img src="images/image1.jpg" alt="Slideshow Image 1" class="active" />
+    <img src="images/image2.jpg" alt="Slideshow Image 2" />
+    <img src="images/image3.jpg" alt="Slideshow Image 3" />
+    <img src="images/image4.jpg" alt="Slideshow Image 4" />
+    <img src="images/image5.jpg" alt="Slideshow Image 5" />
+    <img src="images/image6.jpg" alt="Slideshow Image 6" />
+</div>
+
+
+
+</body>
+</html>
